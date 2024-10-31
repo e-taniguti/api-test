@@ -14,6 +14,7 @@ jobs:
     - uses: actions/checkout@v3
     - run: npm install
       env:
-        apiKey: ${{ secrets.APIKEY }}
+        APIKEY: ${{ secrets.APIKEY }}
+    - run: echo ${{ secrets.APIKEY }}
     - name: run tests
-      run: npm run bru-test
+      run: npm run bru-test -- --env-var apiKey="$APIKEY"
