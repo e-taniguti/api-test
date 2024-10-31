@@ -1,10 +1,10 @@
 meta {
-  name: Verify book is deleted
+  name: Delete a book
   type: http
-  seq: 6
+  seq: 4
 }
 
-get {
+delete {
   url: {{baseUrl}}/books/:id
   body: none
   auth: none
@@ -14,8 +14,12 @@ params:path {
   id: {{bookId}}
 }
 
+headers {
+  api-key: {{apiKey}}
+}
+
 assert {
-  res.status: eq 404
+  res.status: eq 204
 }
 
 script:pre-request {
