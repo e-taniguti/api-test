@@ -18,6 +18,10 @@ headers {
   api-key: {{apiKey}}
 }
 
+assert {
+  res.status: eq 204
+}
+
 script:pre-request {
   bru.setVar('bookId' , bru.getEnvVar('bookId'))
 }
