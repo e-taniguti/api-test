@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: TEST
     steps:
-    - uses: actions/checkout@v3
-    - run: npm install
-      env:
-        APIKEY: ${{ secrets.APIKEY }}
-    - run: echo ${{ secrets.APIKEY }}
-    - name: run tests
-      run: npm run bru-test -- --env-var apiKey="$APIKEY"
+      - uses: actions/checkout@v3
+      - run: npm install
+      - name: Retrieve secret
+        run: echo ${{ secrets.APIKEY }}
+        env:
+          api_key: ${{ secrets.APIKEY }}
+      - name: run tests
+        run: npm run bru-test -- --env-var apiKey="$api_key"
