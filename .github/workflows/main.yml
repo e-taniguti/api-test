@@ -8,6 +8,8 @@ on:
 
 jobs:
   run_bruno_api_test:
+    env:
+      apiKey: ${{ secrets.APIKEY }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
