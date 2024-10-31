@@ -8,11 +8,12 @@ on:
 
 jobs:
   run_bruno_api_test:
-    env:
-      apiKey: ${{ secrets.APIKEY }}
     runs-on: ubuntu-latest
+    environment: TEST
     steps:
     - uses: actions/checkout@v3
     - run: npm install
+      env:
+        apiKey: ${{ secrets.APIKEY }}
     - name: run tests
       run: npm run bru-test
